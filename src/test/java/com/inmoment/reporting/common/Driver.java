@@ -8,8 +8,8 @@ import java.io.FileInputStream;
 import java.util.Properties;
 
 public class Driver {
-    public static WebDriver driver;
-    public static WebDriver getDriver(){
+   private static WebDriver driver;
+   public static WebDriver getDriver(){
         if (driver == null){
             setUpDriver();
         }

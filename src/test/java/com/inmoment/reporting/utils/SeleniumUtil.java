@@ -7,12 +7,13 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 public class SeleniumUtil {
     WebDriver driver = Driver.getDriver();
-    WebDriverWait wait;
+    WebDriverWait wait = new WebDriverWait(driver, 30);
     Actions act = new Actions(Driver.getDriver());
 
     public void goToPage(String url){
@@ -66,12 +67,9 @@ public class SeleniumUtil {
         Assert.assertTrue(element.isDisplayed());
     }
 
-    public void implicitlyWait(long l){
-        driver.manage().timeouts().implicitlyWait(l, TimeUnit.SECONDS);
-    }
-
     public void waitForElementVisible(WebElement element){ wait.until(ExpectedConditions.visibilityOf(element)); }
-    public void waitForElementVisible(By locator){ wait.until(ExpectedConditions.visibilityOf(driver.findElement(locator))); }
+    public void waitForElementVisible(By locator){ wait.until(ExpectedConditions.visibilityOfElementLocated(locator)); }
+    public void waitForInvisibilityOfElement(By locator){ wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));}
 
     public void deleteCookies(){ driver.manage().deleteAllCookies(); }
     public void fluentlyWait(){
@@ -79,6 +77,24 @@ public class SeleniumUtil {
                 .withTimeout(60,TimeUnit.SECONDS)
                 .pollingEvery(2, TimeUnit.SECONDS)
                 .ignoring(NoSuchElementException.class);
+    }
+    public void jseClickInnerElement(By locator){
+        WebElement element = findElement(locator);
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].click()", element);
+    }
+    public List<WebElement> findElements(By locator){
+        List<WebElement> elements = driver.findElements(locator);
+        return elements;
+    }
+    public void getText (By locator){
+        driver.findElement(locator).getText();
+    }
+    public void getText (WebElement element){
+        element.getText();
+    }
+    public void getAttribute(WebElement element){
+        element.getAttribute("value");
     }
 
 }
