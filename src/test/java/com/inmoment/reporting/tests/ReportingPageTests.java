@@ -6,20 +6,20 @@ import org.testng.annotations.Test;
 
 public class ReportingPageTests extends TestBase {
     ReportingPage reportingPage = new ReportingPage();
-    @Test
+    @Test (priority = 2)
     public void verifyGoToReportingPage() throws InterruptedException {
        reportingPage.goToReportingPage();
 
     }
-    @Test
+    @Test (priority = 3)
     public void verifyIfEmailDispositionElementsAreDisplayed() throws InterruptedException {
         reportingPage.controlEmailDispositionElementsAreVisible();
     }
-    @Test
+    @Test (priority = 4)
     public void verifyGoToProgramOverview() throws InterruptedException {
         reportingPage.goProgramOverview();
     }
-    @Test
+    @Test (priority = 5)
     public void verifyIfProgramOverviewElementsAreDisplayed() throws InterruptedException {
         reportingPage.controlProgramOverviewElementsAreVisible();
     }

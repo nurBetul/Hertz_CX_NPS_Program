@@ -37,7 +37,7 @@ public class LoginPage extends PageBase {
         seleniumutil.assertIsDisplayed(hertzCXLocator);
         seleniumutil.deleteCookies();
     }
-    public void loginSuccessfully() throws InterruptedException {
+   /* public void loginSuccessfully() throws InterruptedException {
         seleniumutil.goToPage(seleniumutil.getProperty("reportingPageUrl"));
         waitForPageLoaded();
         seleniumutil.click(emailLocator);
@@ -50,9 +50,9 @@ public class LoginPage extends PageBase {
         seleniumutil.waitForElementVisible(hertzCXLocator);
         seleniumutil.assertIsDisplayed(hertzCXLocator);
         seleniumutil.deleteCookies();
-    }
+    } */
     public void goToNPSProgram() throws InterruptedException {
-        loginSuccessfully();
+        //loginSuccessfully();
         waitForPageLoaded();
         System.out.println("1");
         seleniumutil.waitForElementVisible(userDropDown);

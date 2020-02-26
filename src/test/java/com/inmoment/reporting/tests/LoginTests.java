@@ -14,13 +14,13 @@ public class LoginTests extends TestBase {
     SeleniumUtil seleniumUtil = new SeleniumUtil();
     LoginPage loginPage = new LoginPage();
 
-    @Test
+    @Test (priority = 0)
     public void verifyLoginSuccessfully() throws InterruptedException {
         loginPage.loginSuccessfully(seleniumUtil.getProperty("loginEmailJoe"), seleniumUtil.getProperty("loginPasswordJoe"));
 
     }
 
-    @Test
+    @Test (priority = 1)
     public void verifyGoNPSProgram() throws InterruptedException {
         loginPage.goToNPSProgram();
     }

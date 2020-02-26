@@ -3,9 +3,7 @@
     <test name="allTests">
         <classes>
             <class name="com.inmoment.reporting.tests.LoginTests"/>
-
+            <class name="com.inmoment.reporting.tests.ReportingPageTests"/>
         </classes>
-
     </test>
-
 </suite>

@@ -26,7 +26,7 @@ public class ReportingPage extends PageBase {
     private By programOverviewElements = By.xpath("//div[@class='vis-header-note-and-wrapper']");
 
     public void goToReportingPage() throws InterruptedException {
-        loginPage.goToNPSProgram();
+       // loginPage.goToNPSProgram();
         seleniumutil.jseClickInnerElement(menuIconsDropdown);
         String parentWindow = driver.getWindowHandle();
         System.out.println(parentWindow);
@@ -42,7 +42,7 @@ public class ReportingPage extends PageBase {
     }
 
     public void controlEmailDispositionElementsAreVisible() throws InterruptedException {
-        goToReportingPage();
+       // goToReportingPage();
         seleniumutil.waitForElementVisible(iFrame);
         driver.switchTo().frame(driver.findElement(iFrame));
         List<WebElement> emailPageElements;
@@ -50,16 +50,13 @@ public class ReportingPage extends PageBase {
         for (WebElement element: emailPageElements
              ) {
             seleniumutil.assertIsDisplayed(element);
-            seleniumutil.getText(element);
-            System.out.println("Text: " + element);
-            seleniumutil.getAttribute(element);
-            System.out.println("Attribute value: " + element);
+            System.out.println(element.getText());
         }
     }
 
 
     public void goProgramOverview() throws InterruptedException {
-        goToReportingPage();
+       // goToReportingPage();
         seleniumutil.waitForElementVisible(emailDisposition);
         seleniumutil.click(emailDisposition);
         seleniumutil.click(programOverview);
@@ -68,7 +65,7 @@ public class ReportingPage extends PageBase {
     }
 
     public void controlProgramOverviewElementsAreVisible() throws InterruptedException {
-        goProgramOverview();
+       // goProgramOverview();
         seleniumutil.waitForElementVisible(poiFrame);
         driver.switchTo().frame(driver.findElement(poiFrame));
         List<WebElement> poElements = seleniumutil.findElements(programOverviewElements);

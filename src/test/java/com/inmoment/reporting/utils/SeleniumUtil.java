@@ -87,15 +87,6 @@ public class SeleniumUtil {
         List<WebElement> elements = driver.findElements(locator);
         return elements;
     }
-    public void getText (By locator){
-        driver.findElement(locator).getText();
-    }
-    public void getText (WebElement element){
-        element.getText();
-    }
-    public void getAttribute(WebElement element){
-        element.getAttribute("value");
-    }
     public String getCurrentUrl(){
         return driver.getCurrentUrl();
     }
