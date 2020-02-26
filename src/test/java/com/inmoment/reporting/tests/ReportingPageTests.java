@@ -19,6 +19,9 @@ public class ReportingPageTests extends TestBase {
     public void verifyGoToProgramOverview() throws InterruptedException {
         reportingPage.goProgramOverview();
     }
-
+    @Test
+    public void verifyIfProgramOverviewElementsAreDisplayed() throws InterruptedException {
+        reportingPage.controlProgramOverviewElementsAreVisible();
+    }
 
 }

@@ -20,8 +20,10 @@ public class ReportingPage extends PageBase {
     private By filters = By.xpath("//strong[@class='filter-section-title']");
     private By allElementNearFilters = By.xpath("//span[@class='ng-binding ng-scope']//..");
     private By keyMeasuresFiveElements = By.xpath("//div[@class='vis-single-value-no-results']");
-    //private By emailDispositonPageElements = By.xpath("//div[@class='vis-wrapper-container']");
     private By emailDispositonPageElements = By.xpath("//div[@class='dashboard-element ng-isolate-scope']/..");
+    private By iFrame = By.cssSelector("div.dashboard-holder>iframe");
+    private By poiFrame = By.xpath("//iframe[@title='Latest Month']");
+    private By programOverviewElements = By.xpath("//div[@class='vis-header-note-and-wrapper']");
 
     public void goToReportingPage() throws InterruptedException {
         loginPage.goToNPSProgram();
@@ -29,6 +31,7 @@ public class ReportingPage extends PageBase {
         String parentWindow = driver.getWindowHandle();
         System.out.println(parentWindow);
         seleniumutil.jseClickInnerElement(reportingIcon);
+        System.out.println("4");
         Set<String> winHandles = driver.getWindowHandles();
         for (String handle: winHandles
              ) {
@@ -40,11 +43,13 @@ public class ReportingPage extends PageBase {
 
     public void controlEmailDispositionElementsAreVisible() throws InterruptedException {
         goToReportingPage();
-        //seleniumutil.waitForElementVisible(emailDispositonPageElements);
+        seleniumutil.waitForElementVisible(iFrame);
+        driver.switchTo().frame(driver.findElement(iFrame));
         List<WebElement> emailPageElements;
         emailPageElements = seleniumutil.findElements(emailDispositonPageElements);
         for (WebElement element: emailPageElements
              ) {
+            seleniumutil.assertIsDisplayed(element);
             seleniumutil.getText(element);
             System.out.println("Text: " + element);
             seleniumutil.getAttribute(element);
@@ -53,13 +58,25 @@ public class ReportingPage extends PageBase {
     }
 
 
-
     public void goProgramOverview() throws InterruptedException {
         goToReportingPage();
         seleniumutil.waitForElementVisible(emailDisposition);
         seleniumutil.click(emailDisposition);
         seleniumutil.click(programOverview);
+        String url = seleniumutil.getCurrentUrl();
+        System.out.println(url);
+    }
 
+    public void controlProgramOverviewElementsAreVisible() throws InterruptedException {
+        goProgramOverview();
+        seleniumutil.waitForElementVisible(poiFrame);
+        driver.switchTo().frame(driver.findElement(poiFrame));
+        List<WebElement> poElements = seleniumutil.findElements(programOverviewElements);
+        for (WebElement element: poElements
+             ) {
+            seleniumutil.assertIsDisplayed(element);
+            System.out.println(element.getText());
+        }
 
     }
 

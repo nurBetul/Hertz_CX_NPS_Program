@@ -96,5 +96,8 @@ public class SeleniumUtil {
     public void getAttribute(WebElement element){
         element.getAttribute("value");
     }
+    public String getCurrentUrl(){
+        return driver.getCurrentUrl();
+    }
 
 }
