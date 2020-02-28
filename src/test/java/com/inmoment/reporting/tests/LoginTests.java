@@ -7,6 +7,7 @@ import com.inmoment.reporting.utils.SeleniumUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 public class LoginTests extends TestBase {

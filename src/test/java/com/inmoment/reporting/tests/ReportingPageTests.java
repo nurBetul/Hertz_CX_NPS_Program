@@ -15,11 +15,11 @@ public class ReportingPageTests extends TestBase {
     public void verifyIfEmailDispositionElementsAreDisplayed() throws InterruptedException {
         reportingPage.controlEmailDispositionElementsAreVisible();
     }
-    @Test (priority = 4)
+    @Test (priority = 4, groups = {"exclude"})
     public void verifyGoToProgramOverview() throws InterruptedException {
         reportingPage.goProgramOverview();
     }
-    @Test (priority = 5)
+    @Test (priority = 5, groups = {"exclude"})
     public void verifyIfProgramOverviewElementsAreDisplayed() throws InterruptedException {
         reportingPage.controlProgramOverviewElementsAreVisible();
     }

@@ -5,6 +5,7 @@ import com.inmoment.reporting.common.PageBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Reporter;
 
 import java.util.List;
 import java.util.Set;
@@ -26,7 +27,7 @@ public class ReportingPage extends PageBase {
     private By programOverviewElements = By.xpath("//div[@class='vis-header-note-and-wrapper']");
 
     public void goToReportingPage() throws InterruptedException {
-       // loginPage.goToNPSProgram();
+        //loginPage.goToNPSProgram();
         seleniumutil.jseClickInnerElement(menuIconsDropdown);
         String parentWindow = driver.getWindowHandle();
         System.out.println(parentWindow);
@@ -39,10 +40,11 @@ public class ReportingPage extends PageBase {
                 driver.switchTo().window(handle);
             }
         }
+        Reporter.log("Clicked reporting icon and switched to the reporting page");
     }
 
     public void controlEmailDispositionElementsAreVisible() throws InterruptedException {
-       // goToReportingPage();
+        //goToReportingPage();
         seleniumutil.waitForElementVisible(iFrame);
         driver.switchTo().frame(driver.findElement(iFrame));
         List<WebElement> emailPageElements;
@@ -52,20 +54,24 @@ public class ReportingPage extends PageBase {
             seleniumutil.assertIsDisplayed(element);
             System.out.println(element.getText());
         }
+
+        Reporter.log("Controlled 18 elements are displayed in email disposition");
     }
 
 
     public void goProgramOverview() throws InterruptedException {
-       // goToReportingPage();
+        goToReportingPage();
         seleniumutil.waitForElementVisible(emailDisposition);
         seleniumutil.click(emailDisposition);
         seleniumutil.click(programOverview);
         String url = seleniumutil.getCurrentUrl();
         System.out.println(url);
+
+        Reporter.log("Clicked program overview and went to the page.");
     }
 
     public void controlProgramOverviewElementsAreVisible() throws InterruptedException {
-       // goProgramOverview();
+        goProgramOverview();
         seleniumutil.waitForElementVisible(poiFrame);
         driver.switchTo().frame(driver.findElement(poiFrame));
         List<WebElement> poElements = seleniumutil.findElements(programOverviewElements);
@@ -74,6 +80,8 @@ public class ReportingPage extends PageBase {
             seleniumutil.assertIsDisplayed(element);
             System.out.println(element.getText());
         }
+
+        Reporter.log("Controlled if the elements in the Program Overview page are displayed.");
 
     }
 

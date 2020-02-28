@@ -1,9 +1,17 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite name="allTestSuite">
-    <test name="allTests">
-        <classes>
-            <class name="com.inmoment.reporting.tests.LoginTests"/>
-            <class name="com.inmoment.reporting.tests.ReportingPageTests"/>
-        </classes>
-    </test>
+<listeners>
+    <listener class-name="com.inmoment.reporting.tests.Listeners"/>
+</listeners>
+<test name="allTests">
+    <groups>
+        <run>
+            <exclude name = "exclude" />
+        </run>
+    </groups>
+    <classes>
+        <class name="com.inmoment.reporting.tests.LoginTests"/>
+        <class name="com.inmoment.reporting.tests.ReportingPageTests"/>
+    </classes>
+</test>
 </suite>

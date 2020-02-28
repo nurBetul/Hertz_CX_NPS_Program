@@ -7,6 +7,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.Reporter;
 
 public class LoginPage extends PageBase {
     private  WebDriver driver = Driver.getDriver();
@@ -36,8 +37,9 @@ public class LoginPage extends PageBase {
         seleniumutil.waitForElementVisible(hertzCXLocator);
         seleniumutil.assertIsDisplayed(hertzCXLocator);
         seleniumutil.deleteCookies();
+        Reporter.log("Logged in successfully with parameters");
     }
-   /* public void loginSuccessfully() throws InterruptedException {
+    public void loginSuccessfully() throws InterruptedException {
         seleniumutil.goToPage(seleniumutil.getProperty("reportingPageUrl"));
         waitForPageLoaded();
         seleniumutil.click(emailLocator);
@@ -50,7 +52,8 @@ public class LoginPage extends PageBase {
         seleniumutil.waitForElementVisible(hertzCXLocator);
         seleniumutil.assertIsDisplayed(hertzCXLocator);
         seleniumutil.deleteCookies();
-    } */
+        Reporter.log("Logged in successfully without parameters");
+    }
     public void goToNPSProgram() throws InterruptedException {
         //loginSuccessfully();
         waitForPageLoaded();
@@ -63,6 +66,7 @@ public class LoginPage extends PageBase {
         seleniumutil.jseClickInnerElement(NPSProgram);
         Thread.sleep(1000);
         System.out.println("3");
+        Reporter.log("The reporting page went to NPS Program");
 
         //seleniumutil.waitForElementVisible(reportingIcon);
         //seleniumutil.click(menuIconsDropdown);

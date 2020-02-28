@@ -13,14 +13,15 @@ public class TestBase {
         Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-   /* @BeforeMethod
-    public void beforeMethod(){
+   /*@BeforeClass
+    public void beforeClass(){
+        Driver.setUpDriver();
         Driver.getDriver().manage().window().maximize();
         Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-    @AfterMethod
-    public void  afterMethod(){
+    @AfterClass
+    public void  afterClass(){
         Driver.closeDriver();
     } */
 
